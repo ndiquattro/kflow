@@ -1,0 +1,12 @@
+Package: kflow
+Title: Functions for Interacting with Kubeflow
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Nick",
+           family = "DiQuattro",
+           role = c("aut", "cre"),
+           email = "ndiquattro@gmail.com")
+Description: Convenience functions for writing R code that works in a Kubeflow environment.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
