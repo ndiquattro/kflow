@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![R build
+status](https://github.com/ndiquattro/kflow/workflows/R-CMD-check/badge.svg)](https://github.com/ndiquattro/kflow)
 <!-- badges: end -->
 
 The ambition of kflow is to make it easier to build R code that is
