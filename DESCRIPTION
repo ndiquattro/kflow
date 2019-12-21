@@ -13,4 +13,7 @@ LazyData: true
 URL: https://github.com/ndiquattro/kflow
 BugReports: https://github.com/ndiquattro/kflow/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
+Imports: 
+    fs,
+    readr
