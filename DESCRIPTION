@@ -10,3 +10,5 @@ Description: Convenience functions for writing R code that works in a Kubeflow e
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/ndiquattro/kflow
+BugReports: https://github.com/ndiquattro/kflow/issues
