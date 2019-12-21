@@ -17,3 +17,5 @@ RoxygenNote: 7.0.2
 Imports: 
     fs,
     readr
+Suggests: 
+    testthat (>= 2.1.0)
