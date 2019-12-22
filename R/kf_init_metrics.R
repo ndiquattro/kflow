@@ -9,5 +9,5 @@
 #' metrics <- kf_init_metrics()
 #' jsonlite::toJSON(metrics, pretty = TRUE)
 kf_init_metrics <- function() {
-  structure(list(metrics = list()), class = "kflow_meta")
+  structure(list(metrics = list()), class = c("kflow_meta", "list"))
 }
