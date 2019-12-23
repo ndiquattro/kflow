@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • kflow</title>
+<title>Add metric to pipeline metrics set — kf_add_metric • kflow</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Add metric to pipeline metrics set — kf_add_metric" />
+<meta property="og:description" content="Adds on to an existing metric set and checks values are formatted correctly." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -101,60 +103,75 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Add metric to pipeline metrics set</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ndiquattro/kflow/blob/master/R/kf_add_metric.R'><code>R/kf_add_metric.R</code></a></small>
+    <div class="hidden name"><code>kf_add_metric.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Adds on to an existing metric set and checks values are formatted correctly.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>kf_add_metric</span>(<span class='no'>metric_set</span>, <span class='no'>name</span>, <span class='no'>value</span>, <span class='no'>format</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="kf_add_metric.html">kf_add_metric()</a></code> </p>
-        </td>
-        <td><p>Add metric to pipeline metrics set</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kf_init_metrics.html">kf_init_metrics()</a></code> </p>
-        </td>
-        <td><p>Initialize Pipeline Metrics Artifacts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kf_write_output.html">kf_write_output()</a></code> </p>
-        </td>
-        <td><p>Write output to a provided outputPath</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="print.kflow_meta.html">print(<i>&lt;kflow_meta&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Prints kflow_meta objects</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>metric_set</th>
+      <td><p>Metric set from <code><a href='kf_init_metrics.html'>kf_init_metrics()</a></code> or a previious call of this function.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>Name of metric.</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>Value of metric. Must be numeric.</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>Format to display metric in Kubeflow. Must be either RAW or PERCENTAGE.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Metric set</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>You can repeatedly chain this function to iteratively build up a pipeline metrics output.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Create ROC AUC and PR AUC output</span>
+<span class='fu'><a href='kf_init_metrics.html'>kf_init_metrics</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>kf_add_metric</span>(<span class='st'>"roc-auc"</span>, <span class='fl'>.75</span>, <span class='st'>"RAW"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>kf_add_metric</span>(<span class='st'>"pr-auc"</span>, <span class='fl'>.45</span>, <span class='st'>"RAW"</span>)</div><div class='output co'>#&gt; {
+#&gt;   "metrics": [
+#&gt;     {
+#&gt;       "name": "roc-auc",
+#&gt;       "numberValue": 0.75,
+#&gt;       "format": "RAW"
+#&gt;     },
+#&gt;     {
+#&gt;       "name": "pr-auc",
+#&gt;       "numberValue": 0.45,
+#&gt;       "format": "RAW"
+#&gt;     }
+#&gt;   ]
+#&gt; } </div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

@@ -36,7 +36,7 @@
 
 
 <meta property="og:title" content="Write output to a provided outputPath — kf_write_output" />
-<meta property="og:description" content="Write output to a provided outputPath" />
+<meta property="og:description" content="Writes content to a Kubeflow provided path for output." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,7 +111,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Write output to a provided outputPath</p>
+    <p>Writes content to a Kubeflow provided path for output.</p>
     </div>
 
     <pre class="usage"><span class='fu'>kf_write_output</span>(<span class='no'>contents</span>, <span class='no'>outfile</span>)</pre>
@@ -132,17 +132,21 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>outfile</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Defaults to <code><a href='https://readr.tidyverse.org/reference/read_file.html'>readr::write_file()</a></code>, but uses <code><a href='https://rdrr.io/pkg/jsonlite/man/read_json.html'>jsonlite::write_json()</a></code> or <code><a href='https://readr.tidyverse.org/reference/write_delim.html'>readr::write_csv()</a></code> for appropriate classes.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>predictions_table_name</span> <span class='kw'>&lt;-</span> <span class='st'>"model_predictions"</span>
 <span class='no'>mock_path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'>kf_write_output</span>(<span class='no'>predictions_table_name</span>, <span class='no'>mock_path</span>)</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpsedJ2O/file7a31c636e87"</div></pre>
+<span class='fu'>kf_write_output</span>(<span class='no'>predictions_table_name</span>, <span class='no'>mock_path</span>)</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpQ08gDZ/file8024f11d91c"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
