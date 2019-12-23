@@ -4,12 +4,14 @@
 \alias{print.kflow_meta}
 \title{Prints kflow_meta objects}
 \usage{
-\method{print}{kflow_meta}(x, preview = TRUE, ...)
+\method{print}{kflow_meta}(x, preview = TRUE, pretty = TRUE, ...)
 }
 \arguments{
 \item{x}{kflow_meta object. Likely from \code{\link[=kf_init_metrics]{kf_init_metrics()}}.}
 
 \item{preview}{Boolean to indicate whether JSON should be printed. Set to \code{FALSE} to inspect underlying list structure.}
+
+\item{pretty}{Boolean to indicate whether to pretty print or not.}
 
 \item{...}{Other arguments passed on.}
 }

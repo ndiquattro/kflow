@@ -15,7 +15,10 @@ kf_write_output(contents, outfile)
 outfile
 }
 \description{
-Write output to a provided outputPath
+Writes content to a Kubeflow provided path for output.
+}
+\details{
+Defaults to \code{\link[readr:write_file]{readr::write_file()}}, but uses \code{\link[jsonlite:write_json]{jsonlite::write_json()}} or \code{\link[readr:write_csv]{readr::write_csv()}} for appropriate classes.
 }
 \examples{
 predictions_table_name <- "model_predictions"
