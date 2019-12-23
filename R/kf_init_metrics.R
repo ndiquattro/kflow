@@ -7,7 +7,37 @@
 #'
 #' @examples
 #' metrics <- kf_init_metrics()
-#' jsonlite::toJSON(metrics, pretty = TRUE)
+#'
 kf_init_metrics <- function() {
-  structure(list(metrics = list()), class = c("kflow_meta", "list"))
+  metrics <- list(metrics = list())
+  class(metrics) <- c("kflow_meta", class(metrics))
+  metrics
+}
+
+
+#' Prints kflow_meta objects
+#'
+#' Extends print to work with kflow_meta objects
+#'
+#' @param x kflow_meta object. Likely from [kf_init_metrics()].
+#' @param preview Boolean to indicate whether JSON should be printed. Set to `FALSE` to inspect underlying list structure.
+#' @param ... Other arguments passed on.
+#'
+#' @export
+#'
+#' @examples
+#' # By default it displays the eventual JSON
+#' test_mets <- kf_init_metrics()
+#' test_mets
+#'
+#' # Use print() to see in list form
+#' print(test_mets, preview = FALSE)
+print.kflow_meta <- function(x, preview = TRUE, ...) {
+  if (preview) {
+    print(jsonlite::toJSON(x, pretty = TRUE))
+    return(invisible(x))
+  }
+
+  class(x) <- NULL
+  print(x)
 }
