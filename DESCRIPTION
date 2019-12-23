@@ -17,6 +17,7 @@ RoxygenNote: 7.0.2
 Imports: 
     fs,
     readr,
-    jsonlite
+    jsonlite,
+    magrittr
 Suggests: 
     testthat (>= 2.1.0)
