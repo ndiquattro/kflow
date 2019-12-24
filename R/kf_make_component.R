@@ -35,5 +35,5 @@ kf_make_component <- function(rfunction, name, description, image) {
     "-e", paste0(rfunction, '(', arg_calls, ")")
   )
 
-  yaml::as.yaml(yaml_base) %>% cat()
+  yaml::as.yaml(yaml_base)
 }
