@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' metrics <- kf_init_metrics()
-#'
+#' kf_add_metric(metrics, "roc", .5, "RAW")
 kf_init_metrics <- function() {
   metrics <- list(metrics = list())
   class(metrics) <- c("kflow_meta", class(metrics))
