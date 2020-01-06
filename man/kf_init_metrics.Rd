@@ -14,5 +14,5 @@ Lay the foundational elements of the JSON expected by Kubeflow to provide metric
 }
 \examples{
 metrics <- kf_init_metrics()
-
+kf_add_metric(metrics, "roc", .5, "RAW")
 }
