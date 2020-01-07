@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write output to a provided outputPath — kf_write_output • kflow</title>
+<title>kflow: Functions for Interacting with Kubeflow from R — kflow-package • kflow</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Write output to a provided outputPath — kf_write_output" />
-<meta property="og:description" content="Writes content to a Kubeflow provided path for output." />
+<meta property="og:title" content="kflow: Functions for Interacting with Kubeflow from R — kflow-package" />
+<meta property="og:description" content="Convenience functions for writing R code that works in a Kubeflow environment." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,51 +105,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write output to a provided outputPath</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ndiquattro/kflow/blob/master/R/kf_write_output.R'><code>R/kf_write_output.R</code></a></small>
-    <div class="hidden name"><code>kf_write_output.Rd</code></div>
+    <h1>kflow: Functions for Interacting with Kubeflow from R</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ndiquattro/kflow/blob/master/R/kflow-package.R'><code>R/kflow-package.R</code></a></small>
+    <div class="hidden name"><code>kflow-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Writes content to a Kubeflow provided path for output.</p>
+    <p>Convenience functions for writing R code that works in a Kubeflow environment.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kf_write_output</span>(<span class='no'>contents</span>, <span class='no'>outfile</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>contents</th>
-      <td><p>R object to save.</p></td>
-    </tr>
-    <tr>
-      <th>outfile</th>
-      <td><p>File provided by Kubeflow</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>outfile</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p><a href='https://github.com/ndiquattro/kflow'>https://github.com/ndiquattro/kflow</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/ndiquattro/kflow/issues'>https://github.com/ndiquattro/kflow/issues</a></p></li>
+</ul>
 
-    <p>Defaults to <code><a href='https://readr.tidyverse.org/reference/read_file.html'>readr::write_file()</a></code>, but uses <code><a href='https://rdrr.io/pkg/jsonlite/man/read_json.html'>jsonlite::write_json()</a></code> or <code><a href='https://readr.tidyverse.org/reference/write_delim.html'>readr::write_csv()</a></code> for appropriate classes.</p>
+</div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>predictions_table_name</span> <span class='kw'>&lt;-</span> <span class='st'>"model_predictions"</span>
-<span class='no'>mock_path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'>kf_write_output</span>(<span class='no'>predictions_table_name</span>, <span class='no'>mock_path</span>)</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpw99MLR/file75f63828977"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#examples">Examples</a></li>
+      <li><a href="#see-also">See also</a></li>
     </ul>
 
+    <h2>Author</h2>
+    <p><strong>Maintainer</strong>: Nick DiQuattro <a href='mailto:ndiquattro@gmail.com'>ndiquattro@gmail.com</a></p>
   </div>
 </div>
 

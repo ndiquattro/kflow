@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write output to a provided outputPath — kf_write_output • kflow</title>
+<title>Make Kubeflow component from a function — kf_make_component • kflow</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Write output to a provided outputPath — kf_write_output" />
-<meta property="og:description" content="Writes content to a Kubeflow provided path for output." />
+<meta property="og:title" content="Make Kubeflow component from a function — kf_make_component" />
+<meta property="og:description" content="Given a defined R function export a YAML file for Kubeflow to consume." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,41 +105,70 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write output to a provided outputPath</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ndiquattro/kflow/blob/master/R/kf_write_output.R'><code>R/kf_write_output.R</code></a></small>
-    <div class="hidden name"><code>kf_write_output.Rd</code></div>
+    <h1>Make Kubeflow component from a function</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ndiquattro/kflow/blob/master/R/kf_make_component.R'><code>R/kf_make_component.R</code></a></small>
+    <div class="hidden name"><code>kf_make_component.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Writes content to a Kubeflow provided path for output.</p>
+    <p>Given a defined R function export a YAML file for Kubeflow to consume.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kf_write_output</span>(<span class='no'>contents</span>, <span class='no'>outfile</span>)</pre>
+    <pre class="usage"><span class='fu'>kf_make_component</span>(<span class='no'>rfunction</span>, <span class='no'>name</span>, <span class='no'>description</span>, <span class='no'>image</span>, <span class='no'>file</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>contents</th>
-      <td><p>R object to save.</p></td>
+      <th>rfunction</th>
+      <td><p>Name of target function.</p></td>
     </tr>
     <tr>
-      <th>outfile</th>
-      <td><p>File provided by Kubeflow</p></td>
+      <th>name</th>
+      <td><p>Name of component.</p></td>
+    </tr>
+    <tr>
+      <th>description</th>
+      <td><p>Description of component.</p></td>
+    </tr>
+    <tr>
+      <th>image</th>
+      <td><p>Location of Docker image.</p></td>
+    </tr>
+    <tr>
+      <th>file</th>
+      <td><p>Location to write yaml. Optional.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>outfile</p>
+    <p>Component YAML</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Defaults to <code><a href='https://readr.tidyverse.org/reference/read_file.html'>readr::write_file()</a></code>, but uses <code><a href='https://rdrr.io/pkg/jsonlite/man/read_json.html'>jsonlite::write_json()</a></code> or <code><a href='https://readr.tidyverse.org/reference/write_delim.html'>readr::write_csv()</a></code> for appropriate classes.</p>
+    <p>Names of metrics and ui metadata arguments are renamed to required
+specifications. Kubeflow likes arguments to be typed, which R doesn't handle
+naturally. This function looks for a slug at the end of each argument to
+determine the type. For example, <code>table_name_string</code> would be considered an
+input String. Output paths are identified by ending in <code>_out</code>. Supported
+translations are:</p>
+<p>Inputs</p><ul>
+<li><p><code>_string</code> = String</p></li>
+<li><p><code>_int</code> = Integer</p></li>
+<li><p><code>_bool</code> = Bool</p></li>
+<li><p><code>_float</code> = Float</p></li>
+</ul>
+
+<p>Outputs</p><ul>
+<li><p><code>_out</code> = outputPath</p></li>
+<li><p><code>_metrics</code> = Metrics</p></li>
+<li><p><code>_uimeta</code> = UI_metadata</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>predictions_table_name</span> <span class='kw'>&lt;-</span> <span class='st'>"model_predictions"</span>
-<span class='no'>mock_path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'>kf_write_output</span>(<span class='no'>predictions_table_name</span>, <span class='no'>mock_path</span>)</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpw99MLR/file75f63828977"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>tfun</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>table_string</span>, <span class='no'>pred_count_int</span>, <span class='no'>path_metrics</span>) <span class='fl'>2</span> * <span class='fl'>2</span>
+<span class='fu'>kf_make_component</span>(<span class='st'>"tfun"</span>, <span class='st'>"Test Component"</span>, <span class='st'>"Test out the component"</span>, <span class='st'>"gcr.io/test/test"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in get(fun, mode = "function", envir = envir): object 'tfun' of mode 'function' was not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
