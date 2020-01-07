@@ -18,6 +18,10 @@ Imports:
     fs,
     readr,
     jsonlite,
-    magrittr
+    magrittr,
+    methods,
+    stringr,
+    purrr,
+    yaml
 Suggests: 
     testthat (>= 2.1.0)
