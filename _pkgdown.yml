@@ -1,3 +1,14 @@
 destination: docs
 development:
   mode: auto
+reference:
+- title: General Helpers
+  contents:
+  - kf_write_output
+  - kf_make_component
+- title: Metric Helpers
+  contents:
+  - kf_init_metric
+  - kf_add_metric
+  - kf_init_ui_meta
+  - kf_add_roc
